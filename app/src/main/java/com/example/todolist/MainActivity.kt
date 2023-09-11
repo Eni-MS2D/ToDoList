@@ -16,17 +16,17 @@ class MainActivity : AppCompatActivity() {
 
         val texteNomListe = findViewById<EditText>(R.id.editTextText)
         val btnNewToDoList = findViewById<ImageButton>(R.id.imgBtnListe)
-        val listToDo = findViewById<ListView>(R.id.listToDoList)
-        var listTest = arrayOf("Test1", "Test2", "Test3")
-        var adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, listTest)
+        val listViewToDo = findViewById<ListView>(R.id.listToDoList)
+        var listToDo : Array<String> = emptyArray()
+        var adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, listToDo)
 
-        listToDo.adapter = adapter
+        listViewToDo.adapter = adapter
 
         btnNewToDoList.setOnClickListener {
             if(texteNomListe.text.toString() != "") {
-                listTest += texteNomListe.text.toString()
-                adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, listTest)
-                listToDo.adapter = adapter
+                listToDo += texteNomListe.text.toString()
+                adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, listToDo)
+                listViewToDo.adapter = adapter
                 texteNomListe.text.clear()
             }
             else{
