@@ -1,5 +1,7 @@
 package com.example.todolist
 
+import DetailActivity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
@@ -22,6 +24,14 @@ class MainActivity : AppCompatActivity() {
             listTest += "Test4"
             adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, listTest)
             listToDo.adapter = adapter
+        }
+
+        listToDo.setOnItemClickListener { parent, view, position, id ->
+            val selectedItem = listTest[position]
+            val intent = Intent(this, DetailActivity::class.java)
+
+            intent.putExtra("selectedItem", selectedItem)
+            startActivity(intent)
         }
     }
 }
